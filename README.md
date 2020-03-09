@@ -13,4 +13,6 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 
 ### Links úteis:
 
+8086 IS: https://ece425web.groups.et.byu.net/stable/labs/8086InstructionSet.html
 Seis coisas que você tem que saber sobre o 8086: https://ece425web.groups.et.byu.net/stable/labs/8086Assembly.html
+
