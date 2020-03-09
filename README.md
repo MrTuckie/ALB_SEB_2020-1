@@ -10,3 +10,7 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 4) Rode o comando no dosbox: "mount c /home/user/dosbox";
 5) Escreva debug para rodar os comandos de debug.
 6) Tenho que continuar めんどくさい
+
+### Links úteis:
+
+Seis coisas que você tem que saber sobre o 8086: https://ece425web.groups.et.byu.net/stable/labs/8086Assembly.html
