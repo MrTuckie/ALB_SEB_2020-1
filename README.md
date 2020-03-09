@@ -8,9 +8,9 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 2) Depois baixe usando sudo apt-get install dosbox para baixar o dosbox;
 3) Abra o dosbox;
 4) Rode o comando no dosbox: "mount c /home/user/dosbox";
-5) Escreva debug para rodar os comandos de debug.
-6) Tenho que continuar めんどくさい
-7 Baixe o arquivo .conf do dosbox
+5) Escreva debug para rodar os comandos de debug;
+6) Tenho que continuar a montar essa lista めんどくさい;
+7) Baixe o arquivo .conf do dosbox para facilitar sua vida;
 
 ### Links úteis:
 #### 8086:
