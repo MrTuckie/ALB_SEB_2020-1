@@ -16,10 +16,10 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 1) Setar os caminhos "PATH" para facilitar o uso do DOSBox;
 2) Organizar em pastas os arquivos de exemplo;
 
-### Links úteis:
-#### 8086:
+## Links úteis:
+### 8086:
 8086 IS: https://ece425web.groups.et.byu.net/stable/labs/8086InstructionSet.html
 Seis coisas que você tem que saber sobre o 8086: https://ece425web.groups.et.byu.net/stable/labs/8086Assembly.html
 
-#### DOSBox:
+### DOSBox:
 Shortcuts: https://www.dosbox.com/wiki/Shortcuts_that_You_Run_in_DOSBox
