@@ -9,12 +9,7 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 3) Abra o dosbox;
 4) Rode o comando no dosbox: "mount c /home/user/dosbox";
 5) Escreva debug para rodar os comandos de debug;
-6) Tenho que continuar a montar essa lista めんどくさい;
-7) Baixe o arquivo .conf do dosbox para facilitar sua vida;
-
-## TODO
-1) Setar os caminhos "PATH" para facilitar o uso do DOSBox;
-2) Organizar em pastas os arquivos de exemplo;
+6) Baixe o arquivo .conf do dosbox para facilitar sua vida;
 
 ## Links úteis:
 ### 8086:
@@ -22,4 +17,7 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 Seis coisas que você tem que saber sobre o 8086: https://ece425web.groups.et.byu.net/stable/labs/8086Assembly.html
 
 ### DOSBox:
-Shortcuts: https://www.dosbox.com/wiki/Shortcuts_that_You_Run_in_DOSBox
+Página oficial: https://www.dosbox.com/wiki/
+Atalhos e macetes (como fazer): https://www.dosbox.com/wiki/Shortcuts_that_You_Run_in_DOSBox
+
+###### Feito por Arthur Lorencini Bergamaschi. Professor da matéria: Evandro Ottoni.
