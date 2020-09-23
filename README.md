@@ -9,7 +9,7 @@ Notas de aulas de sistema embarcados - UFES - 2020 - 1
 3) Abra o dosbox;
 4) Rode o comando no dosbox: "mount c /home/user/dosbox";
 5) Escreva debug para rodar os comandos de debug;
-6) Baixe o arquivo .conf do dosbox para facilitar sua vida;
+6) Esqueça tudo acima e baixe o arquivo .conf do dosbox para facilitar sua vida;
 
 ## Links úteis
 
