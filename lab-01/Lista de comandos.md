@@ -3,17 +3,20 @@
 # Segmentos de memória
 
 São macetes que a Intel utilizou para poder mapear a memória de 20bits usando registradores de 16bits.
+Um segmento de memória é nada mais nada menos do que um "offset" (parágrafo, eu acho) para poder usar 16 bits para conseguir endereçar todos as células dos registradores
 
-## Tipos de segmentos home
+## Tipos de segmentos de memória
 
-CS = Code segment
-DS = Data segment
-ES = Extra segment
-SS = Stack segment
+* CS = Code segment
+* DS = Data segment
+* ES = Extra segment
+* SS = Stack segment
+
+Cada um deles tem um valor em específico, que nem mostrado no início das aulas. O meu CS, por exemplo é 0x0760, em alguns casos é 0x075F
 
 ### Observações
 
-A notação: ds:<número qualquer> indica que você está operando em um endereço de memória que começa em DS e tem um offset de <número qualuqer>
+A notação: ds:<número qualquer> indica que você está operando em um endereço de memória que começa em DS e tem um offset de <número qualquer>
 A notação em colchetes indica que você está acessando o VALOR contido dentro daquele endereço de memória (usualmente para dados)
 
 ## Lista de comandos
