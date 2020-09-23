@@ -2,7 +2,25 @@
 
 Notas de aulas de sistema embarcados - UFES - 2020 - 1
 
-## Configurando o ambiente de programação (DOSBox 0.74-3) no Linux (Xubuntu 18.02)
+## Arquivos
+
+### Arquivos DOSBox
+
+Contém todos os arquivos necessários (ou quase todos) para as aulas de laboratório e projetos.
+
+### Material do AVA
+
+Usei aquilo apenas como referência e para ficar mais fácil de olhar os arquivos
+
+### lab-0n
+
+Acho que eu peguei do ava também, não tem todos ainda, mas alguns já estão comentados ou quase completos.
+
+### Macetes de assembly.md
+
+São macetes que eu vou encontrando e adicionando ali para conferir. **Considere como uma cola**
+
+## Configurando o ambiente de programação (DOSBox 0.74-3) no Linux (Xubuntu 18.02 ou superior)
 
 1) Baixe os arquivos de debug (debug.exe) no repositório e coloque em alguma pasta (/home/user/dosbox);
 2) Depois baixe usando sudo apt-get install dosbox para baixar o dosbox;
@@ -10,6 +28,10 @@ Notas de aulas de sistema embarcados - UFES - 2020 - 1
 4) Rode o comando no dosbox: "mount c /home/user/dosbox";
 5) Escreva debug para rodar os comandos de debug;
 6) Esqueça tudo acima e baixe o arquivo .conf do dosbox para facilitar sua vida;
+
+## Configurando DOSBox para Windows
+
+(Ainda não fiz isso, quem quiser fazer, pode adicionar aqui)
 
 ## Links úteis
 
