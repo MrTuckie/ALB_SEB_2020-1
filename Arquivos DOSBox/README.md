@@ -8,6 +8,18 @@ Seu dosbox tem que estar devidamente configurado. As variáveis de ambiente (con
 
 Aqui ficam alguns arquivos para fazer o "hello world" em assembly. No arquivo ".asm" tem a o código que é assemblado e linkado e depois executado. Esse código está cheio de comentários.
 
+#### oi.asm
+
+O aruqivo oi.asm contém o código puro, sem muitos comentários.
+
+#### oiCMNT.asm
+
+Este contém o mesmo código do oi.asm, mas com MUITOS comentários.
+
+#### oi2.asm
+
+Essa é a possível resolução para o exercício prático da aula 3 de laboratório.
+
 ### dosbox-074-3.conf
 
 Este arquivo é importante para você não ter que ficar digitando tudo na mão e ter certeza que as suas variáveis de ambiente (PATH) estão configuradas corretamente.
