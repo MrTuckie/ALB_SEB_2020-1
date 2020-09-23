@@ -1,0 +1,3 @@
+# Somar dois números com 32 bits. 
+01EFCDAB + AACDEEFF = ACBDBCAA  (hexadecimal)
+## Real problema: O 8088 possui registradores de 16bits, então devemos dividir a somatória em 2 partes.
