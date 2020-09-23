@@ -20,13 +20,6 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 6) Rode o comando no dosbox: mount c c:\codigos;
 7) Para abrir a pasta montada digite: c:
 8) Para automatizar os comandos 6 e 7, vá na pasta: \Users\{username}\AppData\Local\DOSBox\dosbox-74-3.conf e no final, em [autoexec], inclua as duas linhas de comando.
-Ficando assim:
-[autoexec]
-# Lines in this section will be run at startup.
-# You can put your MOUNT lines here.
-mount c c:\codigos
-c:
-
 
 
 ## Links úteis:
