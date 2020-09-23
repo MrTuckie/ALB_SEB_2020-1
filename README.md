@@ -11,6 +11,17 @@ Aulas de sistema embarcados - UFES - 2020 - 1
 5) Escreva debug para rodar os comandos de debug;
 6) Baixe o arquivo .conf do dosbox para facilitar sua vida;
 
+## Configurando o ambiente de programação (DOSBox 0.74) no Windows 10
+1) Acesse o site www.dosbox.com para baixar o executável e instalar.
+2) Para facilidade, crie uma pasta na raiz do seu HD. Ficando por exemplo: c:\codigos. É nessa pasta que você colocará seus programas.
+3) Baixe o arquivo debug.exe no repositório e copie para a pasta criada no passo anterior. Esse arquivo já é executável, não precisa fazer nada além de copiá-lo.
+4) Baixe no repositório o arquivo Nasm&freelink e descompacte na pasta criada no passo 2.
+5) Abra o dosbox;
+6) Rode o comando no dosbox: mount c c:\codigos;
+7) Para abrir a pasta montada digite: c:
+
+
+
 ## Links úteis:
 ### 8086:
 8086 IS: https://ece425web.groups.et.byu.net/stable/labs/8086InstructionSet.html
