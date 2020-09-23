@@ -2,7 +2,7 @@
 
 Notas de aulas de sistema embarcados - UFES - 2020 - 1
 
-## Configurando o ambiente de programação (DOSBox 0.74) no Linux (Xubuntu 18.02)
+## Configurando o ambiente de programação (DOSBox 0.74-3) no Linux (Xubuntu 18.02)
 
 1) Baixe os arquivos de debug (debug.exe) no repositório e coloque em alguma pasta (/home/user/dosbox);
 2) Depois baixe usando sudo apt-get install dosbox para baixar o dosbox;
@@ -15,14 +15,14 @@ Notas de aulas de sistema embarcados - UFES - 2020 - 1
 
 ### 8086
 
-8086 Instruction Set (Conjunto de instruções, **muito útil**): [https://ece425web.groups.et.byu.net/stable/labs/8086InstructionSet.html]
-Seis coisas que você tem que saber sobre o 8086: [https://ece425web.groups.et.byu.net/stable/labs/8086Assembly.html]
-Livro sobre o intel 8086: [https://github.com/gurugio/book_assembly_8086/blob/master/8086arch.md]
+8086 Instruction Set (Conjunto de instruções, **muito útil**): [https://ece425web.groups.et.byu.net/stable/labs/8086InstructionSet.html]  
+Seis coisas que você tem que saber sobre o 8086: [https://ece425web.groups.et.byu.net/stable/labs/8086Assembly.html]  
+Livro sobre o intel 8086: [https://github.com/gurugio/book_assembly_8086/blob/master/8086arch.md]  
 
 ### Sobre DOSBox
 
-Página oficial: [https://www.dosbox.com/wiki/]
-Atalhos e macetes (como fazer): [https://www.dosbox.com/wiki/Shortcuts_that_You_Run_in_DOSBox]
+Página oficial: [https://www.dosbox.com/wiki/]  
+Atalhos e macetes (como fazer): [https://www.dosbox.com/wiki/Shortcuts_that_You_Run_in_DOSBox]  
 
 Feito por Arthur Lorencini Bergamaschi.
 Professor da matéria: Evandro Ottoni.
