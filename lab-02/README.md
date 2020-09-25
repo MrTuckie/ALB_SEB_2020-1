@@ -51,12 +51,16 @@ Ninguém se importa com outros bytes, vamos trabalhar com os acima apenas.
 
 ### editando os segmentos de memória (ds, es e ss)
 
-Você tem que adicionar um offset de 16 bytes entre os ponteiros. Se eu estiver certo, acredito que
-seja  adicionar 80 em hexa decimal a partir do ponteiro.
-CS (no meu computador, no de vocês podem variar) = 0x0760
-DS = CS + 0x0080 = 0x07E0
-ES = DS + 0x0080 = 0x0860
-SS = ES + 0x0080 = 0x09E
+**Nessa parte, você não precisa se preocupar muito.** Aqui vamos apenas adicionar 1 ao valor de DS (que costuma ser igual ao de CS no início). Ao fazer isso, quando o computador for ver onde que realmente fica a memória, ele vai dar um shift left (ou também multiplicar por 16).  
+
+16 bytes = 1 Parágrafo. **Isso é uma convenção.**  
+0x1234 = 1234H **Isso é convenção para indicar que o número está em hexadecimal**  
+
+Exemplo:
+
+CS = 0x075F (é um registrador de 16 bits, 4 nibbles, meio byte)  
+Na memória, o endereço é de 5 nibbles, ou seja ele vai virar 075F0. Fazer isso é multiplicar por 16 (se eu não me engano)  
+Se você fizer DS = CS + 1, DS = 0x0760. Quando a memória for endereçar, ela vai deslocar para esquerda (ela faz isso por decisão da intel, isso é invisível para a gente, por isso q vc n tem q se preocupar tanto). Ou seja, DS (para mapear a memória) vira 0
 
 (Essa parte eu posso estar errado, tenho que conferir depois)
 
@@ -77,23 +81,24 @@ Então, o nosso byte 2 fica assim: 1100'0011, que em hexa é 0xC3.
 
 ## Fazendo sentido
 
-Agora, nós temos que escrever isso na memória quase na que "mão", no caso, no endereço, CS:IP (porque é onde fica o código em si).
-Para fazer isso vamos usar o comando ecs:0100 (pois IP = 0100) (para o primeiro byte) e ecs:0101 (para o segundo byte)
--ecs:0100
-8b
--ecs:0101
-c3
+Agora, nós temos que escrever isso na memória quase na que "mão", no caso, no endereço, CS:IP (porque é onde fica o código em si).  
+Para fazer isso vamos usar o comando ecs:0100 (pois IP = 0100) (para o primeiro byte) e ecs:0101 (para o segundo byte).  
+
+-ecs:0100  
+8b  
+-ecs:0101  
+c3  
 
 Para verificar se fez certo, faça:
--ucs:0100
-E deverá aparecer mov ax,bx na primeira linha.
+-ucs:0100  
+E deverá aparecer mov ax,bx na primeira linha.  
 
-Vou continuar a fazendo uns exemplos aqui, vc pode pular pro próximo, se quiser.
+Vou continuar a fazendo uns exemplos aqui, vc pode pular pro próximo, se quiser.  
 
-mov ax,[bx] ; que pega o que tem no endereço correspondente ao número BX, e não o valor contido em bx e joga pra ax.
+mov ax,[bx] ; que pega o que tem no endereço correspondente ao número BX, e não o valor contido em bx e joga pra ax.  
 
-mov,d=1,w=1 -> 1000'1011 8b.
-mod,reg,r/m -> 0000'0111 07.
+mov,d=1,w=1 -> 1000'1011 = 0x8b.
+mod,reg,r/m -> 0000'0111 = 0x07.
 
 ### Eu não vou fazer alguns exercícios da parte prática
 

@@ -48,3 +48,30 @@ Atalhos e macetes (como fazer): [https://www.dosbox.com/wiki/Shortcuts_that_You_
 
 Feito por Arthur Lorencini Bergamaschi.
 Professor da matéria: Evandro Ottoni.
+
+### Sobre o NASM
+
+Hello world:  
+[https://www.nasm.us/doc/nasmdoc9.html]
+
+### Sobre a linguagem Assembly
+
+First Look at Assembly [https://www.youtube.com/watch?v=tn1DCZI9jDA]  
+Como funcionam os loops em Assembly [https://www.youtube.com/watch?v=jS5vTJRfmnI]  
+Como funcionam as funções em Assembly [https://www.youtube.com/watch?v=Pgmbac_ckfM]  
+
+## Como montar o código no DOSBox
+
+Na linha de comando:
+
+1) nasm (ou nasm16) <nome_do_arquivo>.asm -f obj -o <nome_do_arquivo>.obj -l <nome_do_arquivo>.lst <nome_do_arquivo>.asm (assemblando o código .asm)
+2) freelink <nome_do_arquivo> (não tem .lst e nem .obj mesmo) (linkando o programa)
+3) <nome_do_arquivo> (rodando o programa)  
+
+**Graças a deus já existe um macete. *SE* você configurou certo os caminhos, *então* você pode só colocar "nasm oi" que o DOSBox já vai rodar a primeira linha (nasm -f obj ...) sem precisar que você digite tudo.**  
+
+Adicionei um macete a mais. Se você escrever "nasm2 oi" no terminal, ele já roda o nasm e o freelink de uma 
+vez.  
+
+Se você escrever "nasm3 oi" no terminal, ele já faz tudo. Já sai executando o código e foda-se. 
+
