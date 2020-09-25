@@ -1,5 +1,6 @@
 # lab-02 de embarcados
 
+*Confira a pasta imgs com as fotos pra enteder melhor*
 Essa parte aqui é para entender o papel que o compilador faz em traduzir algo como:
 
 "MOV destino, fonte" em 01001010101010101 (chutei um monte de número aqui só pra ilustrar)
@@ -95,10 +96,11 @@ E deverá aparecer mov ax,bx na primeira linha.
 
 Vou continuar a fazendo uns exemplos aqui, vc pode pular pro próximo, se quiser.  
 
-mov ax,[bx] ; que pega o que tem no endereço correspondente ao número BX, e não o valor contido em bx e joga pra ax.  
+***mov ax,[bx]**; que pega o que tem no endereço correspondente ao número BX, e não o valor contido em bx e joga pra ax.  
 
-mov,d=1,w=1 -> 1000'1011 = 0x8b.
-mod,reg,r/m -> 0000'0111 = 0x07.
+mov,d=1,w=1 -> 1000'1011 = 0x8b.  
+mod,reg,r/m -> 0000'0111 = 0x07.  
+-ucs:0100  
 
 ### Eu não vou fazer alguns exercícios da parte prática
 
@@ -107,3 +109,20 @@ Tem uns que ele falou que não era pra fazer mesmo, então to nem aí, fi.
 ### mov ax,[1000]
 
 bora testar
+
+vou ROUBAR aqui... Vou fazer engenharia reversa da parada  
+
+1) Primeiro eu vou fazer 'acs:0100' e escrever 'mov ax,[1000]'
+2) Depois eu vou rodar um 'r' para ver o q tá escrito na linha do cs:0100
+3) vejo que está escrito "A1 00 10"
+4) olho no datasheet algo que bate com isso. Eu percebi que estamos lidando agora em pegar informação direto da memória (endereço 1000) e jogando para o registrador de acumulação (ax, no caso)
+5) Se vc reparar em *"Memory to Accumulator"*, vai ver que agora são 3 bytes que você tem que escrever.
+6) O primeiro é o opcode ainda, 1010'0001 (também conhecido como A1, W = 1 pois estamos lidando com words)
+7) O segundo byte é o addr-low, referente ao endereço da memória em que você quer pegar (q é os dois ultimos bits do endereço que vc pegar, no caso **00** de 10**00**)
+8) O terceiro byte é o addr-high (mesmo esquema acima, mas **10** de **10**00)  
+
+Para você ver o efeito disso, troque o 'mov ax,[1000]' para 'mov ax,[1234]' e veja os efeitos.  
+
+mov ax,bx -> registrador/memória to/from registrador  
+mov ax,1000 -> valor constante (imediato) para registrador
+mov ax,[1000] -> um valor na memória para jogar no registrador de acumulação  
