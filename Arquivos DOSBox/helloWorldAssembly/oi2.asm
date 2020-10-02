@@ -6,8 +6,8 @@ segment code
     mov ax,stack
     mov ss,ax
     mov sp,stacktop
-    mov bx,three_chars
-    mov ah,1
+    mov bx,three_chars ; joga o valor do buff three_chars em bx para poder acumular os valores
+    mov ah,1 ; a principio, não entendi o pq q ele fez isso.
 ; fim dos registros
     int 21h ; função do DOS de entrada de carcater. Retorna em AL
     dec al ; decrementa o valor contido em al => al = al - 1
@@ -25,7 +25,7 @@ segment code
 
     mov dx,display_string ; agora ele pega o valor em display_string e joga para dx 
     
-    mov ah,9 ; isso daqui é a cara de terminar o programa. 
+    mov ah,9 ; isso daqui é a cara de imprimir algo
     int 21h
 ; Terminar o programa e voltar para o sistema operacional
     mov ah,4ch 
