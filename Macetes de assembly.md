@@ -14,7 +14,8 @@ segment code
 Estrutura do código
 [label]   mnemonic   [operands]   [;comment]
 
-Registradores: https://github.com/gurugio/book_assembly_8086/blob/master/8086arch.md
+Registradores: [https://github.com/gurugio/book_assembly_8086/blob/master/8086arch.md]  
+Stacks: [https://www.youtube.com/watch?v=d-2Peb3pCBg]
 
 8086 processor has 8 general registers.
 
