@@ -31,4 +31,8 @@ Seis coisas que você tem que saber sobre o 8086: https://ece425web.groups.et.by
 Página oficial: https://www.dosbox.com/wiki/
 Atalhos e macetes (como fazer): https://www.dosbox.com/wiki/Shortcuts_that_You_Run_in_DOSBox
 
-###### Feito por Arthur Lorencini Bergamaschi. Professor da matéria: Evandro Ottoni.
+## Lista de comandos 8086
+https://ece425web.groups.et.byu.net/stable/labs/8086InstructionSet.html
+
+
+###### Feito por Arthur Lorencini Bergamaschi e Lucas Profiro. Professor da matéria: Evandro Ottoni.
