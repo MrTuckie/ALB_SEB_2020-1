@@ -1,61 +1,70 @@
 # lab-02 de embarcados
 
-*Confira a pasta imgs com as fotos pra enteder melhor*
-Essa parte aqui é para entender o papel que o compilador faz em traduzir algo como:
+*Confira a pasta 'imgs' com as fotos pra enteder melhor*  
+Este laboratório é para entender o papel que o compilador faz em traduzir algo como 'mov ax,bx' (linguagem em assembly) para binário/hexadecimal (no fundo, no fundo, é tudo binário). Nós vamos imitar o papel do compilador e escrever diretamente na memória da máquina (do DOSBox) os valores em hexadecimal correspondente as instruções do tipo 'mov'.  
 
-"MOV destino, fonte" em 01001010101010101 (chutei um monte de número aqui só pra ilustrar)
-Depois disso, vamos utilizar o debug para poder mostrar realmente que o que a gente escreveu como
-0010101010101 em alguma instrução (ou se vc fez errado e deu mole,rapá)
+O intuito disso é aprender que a máquina pega o nosso código em assembly e transforma em binário e salva dentro da memória.
+
+## Glossário
+
+0x1234 = 1234H **Isso é convenção para indicar que o número está em hexadecimal**  
+
+1 parágrafo = 16 bytes  = 128 bits  
+1 word (em geral) = 2 bytes = 16 bits  
+1 byte = 8 bits  
+1 nibble = meio byte = 4 bits. Uma letrinha em hexadecimal ocupa 1 nibble (pois 2^4 = 16)
+
+Como a memória é mapeada usando 0x00000 (5 campos em hexadecimal), nós falamos que ela é composta de 5 nibbles. É sempre bom ter isso na cabeça.  
+BUT, os registradores são sempre de 0x0000, 4 nibbles, ou seja, 16 bits.  Lembre-se disso.  
+
+## Estrutura das instruções
 
 A estrutura é com 6 bytes (48 bits no total), sendo cada byte responsável por algo em específico.
-A contagem é da esquerda pra direita.
+A contagem é da esquerda pra direita. Na prática, apenas os dois ou três primeiros bytes são importantes.  
 
 * Byte #1 = opcode
 * Byte #2 = mod reg rm
-* Byte #3 = lo desloc
-* Byte #4 = hi desloc
-* Byte #5 = lo data
-* Byte #6 = hi data (nada faz sentido, mas vamos em frente e depois voltamos)
+* Byte #3 = lo desloc (não se preocupe)
+* Byte #4 = hi desloc (não esquenta)
+* Byte #5 = lo data (ignore)
+* Byte #6 = hi data (deixa quieto, não é importante agora)
 
-## Byte #1
+### Byte #1 - opcode, em geral
 
 Como cada byte tem 8 bits, o primeiro byte tem uma especificação em 8 bits.
-do bit 7 ao 2 (6 bits) => responsável pelo "código da operação"
-Quando o processador for executar esse código, ele vai saber qual operação realizar (soma, subtração, mov, etc)
-bit 1 = D (Os professores não ajudam muito nas legendas)
-bit 0 = W
+Do bit 7 ao 2 (6 bits) => responsável pelo "código da operação", também chamado de 'opcode'.
+Quando o processador for executar esse código, ele vai saber qual operação realizar (soma, subtração, mov, etc)  
 
-Se W = 0 -> é uma instrução de byte
-else: é uma instrução de word
+Os outros bits são responsáveis por dizer algumas coisas sobre os 'argumentos' das instruções. Serve pra dizer se o 'ax' em 'mov ax,[bx]' é um registrador que vai receber um valor ou vai enviar um valor. Entende?  
 
-Se D = 0 -> fonte da instrução especificada no campo REG (que eu acredito que seja no Byte #2, em algum dos bits dele)
-else: destino da instrução no campo REG (mesma coisa acima)
+bit 1 = D  (de destino)
+bit 0 = W  (de word, palavra)  
 
+**Se** D = 0 -> o registrador especificado no campo "REG" (veremos mais tarde) será a fonte de informação (se ele vai ficar no lado direito do 'mov destino,**fonte**)
+**Caso contrário**: o registrador especificado no campo "REG" será para a onde a informação destinará (se ele vai ficar no lado esquerdo do 'mov **destino**,fonte')  
+
+Se W = 0 -> é uma instrução está mexendo com bytes (ah, al, que possuem 8 bits)
+else: é uma instrução está mexendo com words (ax,bx,dx, que possuem 16bits)
 (sim, em um a gente começou contando os bits de 0 a 7, no outro, a gente começou a contar do 1 ao 6. Nada faz sentido)
 
 MASSSS ARTHURRRRRRRRRR!!! Como que eu sei qual é o código da operação????<
 Dê uma olhada no final do datasheet do microprocessador que é sucesso
 
-## Byte #2
+### Byte #2 - mod, reg, r/m
 
-mod reg r/m
+* O mod é o "modo" (jeito ou maneira de realizar a ação) que você realiza as instruções. Se você for usar uma instrução que lida entre registradores, o 'mod' é um valor. Se você usar instruções que pegam informação de registrador para jogar na memória RAM, é outro, e assim vai.
+* 'reg' é o registrador q vc define se vai ser fonte ou destino, é o que a gente falou lá em cima.
+* r/m é meio q "de registrador pra memória (salvar/save)" ou "da memória pra registrador (carregar/load)". Meio complexo de entender, mas não se preocupe.
 
-* O mod (modo), ainda não saquei o que é. Mas alguma hora eu descubro. Por enquanto, o certo parece ser 11.
-* reg é o registrador q vc define se vai ser fonte ou destino
-* r/m é meio q "de registrador pra memória (salvar/save)" ou "da memória pra registrador (carregar/load)"
+### E os bytes restantes
 
-## Byte #3
-
-Ninguém se importa com outros bytes, vamos trabalhar com os acima apenas.
+Ninguém se importa com outros bytes por agora. Vamos trabalhar com os acima apenas.
 
 ## A parte "prática"
 
 ### editando os segmentos de memória (ds, es e ss)
 
-**Nessa parte, você não precisa se preocupar muito.** Aqui vamos apenas adicionar 1 ao valor de DS (que costuma ser igual ao de CS no início). Ao fazer isso, quando o computador for ver onde que realmente fica a memória, ele vai dar um shift left (ou também multiplicar por 16).  
-
-16 bytes = 1 Parágrafo. **Isso é uma convenção.**  
-0x1234 = 1234H **Isso é convenção para indicar que o número está em hexadecimal**  
+**Nessa parte, você não precisa se preocupar muito.** Aqui vamos apenas adicionar 0x0001 ao valor de DS (que costuma ser igual ao de CS no início). Ao fazer isso, quando o computador for ver onde que realmente fica a memória, ele vai dar um shift left (ou também multiplicar por 16).  
 
 Exemplo:
 
