@@ -4,11 +4,12 @@ Para quem não entende muito de Compiladores em geral (que nem eu): [https://www
 
 ## Links úteis
 
-[https://en.wikipedia.org/wiki/Assembly_language]  
-[https://en.wikipedia.org/wiki/Object_code]  
-[https://en.wikipedia.org/wiki/Linker_(computing)]  
-[https://www.tutorialspoint.com/assembly_programming/assembly_introduction.htm]  
-[https://www.youtube.com/watch?v=Z5JC9Ve1sfI]  
+Assembly: [https://en.wikipedia.org/wiki/Assembly_language]  
+Object code: [https://en.wikipedia.org/wiki/Object_code]  
+Linker (linkador): [https://en.wikipedia.org/wiki/Linker_(computing)]  
+Introdução a assembly:[https://www.tutorialspoint.com/assembly_programming/assembly_introduction.htm]  
+The Fetch-Execute Cycle: What's Your Computer Actually Doing? :[https://www.youtube.com/watch?v=Z5JC9Ve1sfI]  
+DOS INT 21h - DOS Functions Codes: [http://spike.scu.edu.au/~barry/interrupts.html]
 
 ## Conteúdos da aula
 
@@ -19,8 +20,9 @@ Para quem não entende muito de Compiladores em geral (que nem eu): [https://www
 
 ### Entendo o fluxo
 
-1) o código escrito em um arquivo ".asm" vai ser assemblado pelo, no caso, o nasm e vão sair dois arquivos: .obj e .lst
-2) O código assemblado (.obj e .lst) vai ser linkado pelo linker, no caso, freelink e vai resultar em um arquivo .exe (que é executável pelo dosBox)
+1) Escrever o hello world e compilar e executar.
+2) o código escrito em um arquivo ".asm" vai ser assemblado pelo, no caso, o nasm e vão sair dois arquivos: .obj e .lst
+3) O código assemblado (.obj e .lst) vai ser linkado pelo linker, no caso, freelink e vai resultar em um arquivo .exe (que é executável pelo dosBox)
 
 #### Nasm (ou Nasm16)
 
@@ -48,4 +50,11 @@ Na linha de comando:
 Adicionei um macete a mais. Se você escrever "nasm2 oi" no terminal, ele já roda o nasm e o freelink de uma 
 vez.  
 
-Se você escrever "nasm3 oi" no terminal, ele já faz tudo. Já sai executando o código e foda-se. 
+Se você escrever "nasm3 oi" no terminal, ele já faz tudo. Já sai executando o código e foda-se.  
+Se você escrever "nasm4 oi", ele roda o "debug oi.exe" no final.
+
+## O código em si
+
+**Regra geral:** Não pode adicionar coisas que vem da memória diretamente nos registradores de segmento de memória (DS,SS, etc). Você precisa jogar para AX primeiro e depois de ax para ds, ou ss.
+
+'$' = /0 é o final da string análogo ao C.

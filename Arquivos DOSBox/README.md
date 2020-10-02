@@ -2,7 +2,7 @@
 
 ## Pontos importantes
 
-Seu dosbox tem que estar devidamente configurado. As variáveis de ambiente (conhecidas como 'PATH') determinam se você vai conseguir chamar o "NASM" e o "FREELINK" pela linha de comando em qualquer diretório que você esteja no DOSBOX. **Como assim, arthur lindo?** Lembra que lá em PBC, vc chamava o "gcc" de qualquer lugar da pasta? O mesmo vale aqui também. Lá já vem configurado no sistema operacional. Já aqui, precisamos configurar pelo o arquivo ".conf" na mão.
+Seu dosbox tem que estar devidamente configurado. As variáveis de ambiente (conhecidas como 'PATH') determinam se você vai conseguir chamar o "NASM" e o "FREELINK" pela linha de comando em qualquer diretório que você esteja no DOSBOX. **Como assim, arthur lindo?** Lembra que lá em PBC, vc chamava o "gcc" de qualquer lugar da pasta? O mesmo vale aqui também. Lá já vem configurado no sistema operacional. Já aqui, precisamos configurar pelo o arquivo ".conf" na mão. Lembre de configurar isso no DOSBOX, e não no WINDOWS e nem no LINUX. Isso é uma configuração da sua máquina virtual do DOSBOX.
 
 ### helloWorldAssembly
 
