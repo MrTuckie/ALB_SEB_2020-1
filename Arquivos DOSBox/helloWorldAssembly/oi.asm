@@ -7,7 +7,7 @@ segment code
 	mov sp,stacktop 
 
 
-
+PRINT:
 	mov ah,9 
 	mov dx,mensagem 
 	int 21h 
