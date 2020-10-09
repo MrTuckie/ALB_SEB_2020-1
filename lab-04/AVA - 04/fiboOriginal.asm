@@ -1,4 +1,4 @@
-segment code
+ segment code
 ..start:
 ; setup
     mov ax, dados
@@ -33,6 +33,8 @@ quit:
     mov ah,4CH ; retorna para o DOS com código 0
     int 21h
 
+; as funções vão aqui
+
 segment dados ;segmento de dados inicializados
 mensini:    db 'Programa que calcula a Serie de Fibonacci. ',13,10,'$'
 mensfim:    db 'Valor final:',13,10,'$'
@@ -41,3 +43,5 @@ saida:      db '00000',13,10,'$'
 segment stack stack
     resb 256
 stacktop:
+
+; pseudagem

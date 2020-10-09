@@ -18,11 +18,17 @@ L10:
     add dx,bx   ; calcula novo elemento da série (dx = dx+bx)
     mov ax,bx   ; joga o valor do segundo elemento no primeiro
     mov bx,dx   ; joga o valor do elemento somado no segundo elemento
+    
+    push dx
+    call imprimeNumero
+    pop dx
+    
     cmp dx, 0x000F ; compara com 8x16^4 (?), dependendo da flag q levantar, vai acionar a "branch" na prox linha
-    call printNumero
+    ; o valor fica em dx sempre
+    
     ; mov ah,9 ; se eu fizer isso, ax vai cagar os seu valor. preciso lidar com pilha;
     ; int 21h
-    jb L10 ; se dx for menor que 0x8000, vai para L10:, se não continua, fazendo as paradas.
+    jl L10 ; se dx for menor que 0x8000, vai para L10:, se não continua, fazendo as paradas.
     
 
 
@@ -37,17 +43,39 @@ quit:
     mov ah,4CH ; retorna para o DOS com código 0
     int 21h
 
-printNumero:
-    mov di,saida ; DI = destination index, usado para guardar o endereço
+imprimeNumero:
+    mov di,saida ; DI = destination index, usado para guardar o endereço (não precisa se preocupar em tirar por agora)
     push di ; joguei o valor na PILHA, ele está armazenado que nem no exemplo do vídeo.
+
+    
     call bin2ascii
     mov dx,saida
+
+    ; pop di
     mov ah,9
     int 21h
-ret
+
+   
 
 bin2ascii:
+    push ax
+    push bx
     
+    mov si,4
+    mov cx,5
+    mov dx,ax  ; joga dx na parte em ax
+    mov bx,10  ; salva o 10 para divid
+volta:
+    xor dx,dx
+    div bx     ; dx pega o resto
+    add dl,30h
+    mov byte[saida+si],dl
+    dec si
+
+    loop volta
+    
+    pop bx
+    pop ax
 ret
 
 segment dados ;segmento de dados inicializados
