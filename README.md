@@ -74,7 +74,7 @@ Na linha de comando:
 2) freelink <nome_do_arquivo> (não tem .lst e nem .obj mesmo) (linkando o programa)
 3) <nome_do_arquivo> (rodando o programa)  
 
-**Graças a deus já existe um macete. *SE* você configurou certo os caminhos, *então* você pode só colocar "nasm oi" que o DOSBox já vai rodar a primeira linha (nasm -f obj ...) sem precisar que você digite tudo.**  
+**Se você configurou certo os caminhos, *então* você pode só colocar "nasm oi" que o DOSBox já vai rodar a primeira linha (nasm -f obj ...) sem precisar que você digite tudo.**  
 
 Adicionei um macete a mais. Se você escrever "nasm2 oi" no terminal, ele já roda o nasm e o freelink de uma 
 vez.  
