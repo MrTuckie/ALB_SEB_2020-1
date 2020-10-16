@@ -29,9 +29,15 @@ São macetes que eu vou encontrando e adicionando ali para conferir. **Considere
 5) Escreva debug para rodar os comandos de debug;
 6) Esqueça tudo acima e baixe o arquivo .conf do dosbox para facilitar sua vida;
 
-## Configurando DOSBox para Windows
-
-(Ainda não fiz isso, quem quiser fazer, pode adicionar aqui)
+## Configurando o ambiente de programação (DOSBox 0.74) no Windows 10
+1) Acesse o site www.dosbox.com para baixar o executável e instalar.
+2) Para facilidade, crie uma pasta na raiz do seu HD. Ficando por exemplo: c:\codigos. É nessa pasta que você colocará seus programas.
+3) Baixe o arquivo debug.exe no repositório e copie para a pasta criada no passo anterior. Esse arquivo já é executável, não precisa fazer nada além de copiá-lo.
+4) Baixe no repositório o arquivo Nasm&freelink e descompacte na pasta criada no passo 2.
+5) Abra o dosbox;
+6) Rode o comando no dosbox: mount c c:\codigos;
+7) Para abrir a pasta montada digite: c:
+8) Para automatizar os comandos 6 e 7, vá na pasta: \Users\{username}\AppData\Local\DOSBox\dosbox-74-3.conf e no final, em [autoexec], inclua as duas linhas de comando.
 
 ## Links úteis
 
