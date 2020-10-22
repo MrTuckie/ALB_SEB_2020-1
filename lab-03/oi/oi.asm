@@ -1,3 +1,5 @@
+; Código do "hello world" da matéria
+
 segment code
 ..start:
 ; iniciar os registros de segmento DS e SS e o ponteiro de pilha SP

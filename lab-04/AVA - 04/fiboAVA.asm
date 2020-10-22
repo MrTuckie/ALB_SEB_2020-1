@@ -22,8 +22,6 @@ L10:
     
     jb L10 ; se dx for menor que 0x8000, vai para L10:, se não continua, fazendo as paradas.
 
-; AQUI TERMINA A EXECUCAO DO PROGRAMA PRINCIPAL (setup)
-
 ; As partes finais do código.
 exit:
     mov dx,mensfim  ; mensagem de inicio
@@ -33,15 +31,11 @@ quit:
     mov ah,4CH ; retorna para o DOS com código 0
     int 21h
 
-; as funções vão aqui
-
 segment dados ;segmento de dados inicializados
 mensini:    db 'Programa que calcula a Serie de Fibonacci. ',13,10,'$'
-mensfim:    db 'Valor final:',13,10,'$'
+mensfim:    db 'bye',13,10,'$'
 saida:      db '00000',13,10,'$'
 
 segment stack stack
     resb 256
 stacktop:
-
-; pseudagem
