@@ -20,18 +20,23 @@ segment code
 	mov dx, mensini; mensagem de inicio
 	mov ah,9
 	int 21h
+
+
 	mov ax,0; primeiro elemento da serie
 	mov bx,1; segundo elemento da serie
 L10:
 ;-------------------------------------------------------
  ;Se quiser imprimir a sequencia toda tire o comentario
  ;da linha abaixo:
- ;call imprimirBX 
+ 
 ;--------------------------------------------------------
 	mov dx,ax; tomo o ultimo elemento
 	add dx,bx; calcula novo elemento da serie
 	mov ax,bx; atualizo o ultimo elemento
 	mov bx,dx; atualizo o novo elemento da serie 
+
+	call imprimirBX 
+
 	cmp dx,  0x8000 ; condicao de parada
 ; Nessa parte do código aqui, a variável que é comparada é DX.
 ; Lembre-se, ao executar essa parte, bx possui o último valor da sequência.
@@ -67,6 +72,8 @@ imprimirBX:
 ;	Executando Funcao
 ;---------------------
 	call bin2ascii ; chamada de função para converter
+
+	
 	mov dx, saida  ; essas três linhas são responsáveis por imprimir na tela o valor de 'saída'
 	mov ah, 9	   ; a impressão é sempre feita olhando a tabela ASCII
 	int 21h
@@ -111,7 +118,9 @@ bin2ascii:
 	add dl, '0' ; Convertendo pra ASCII (a soma por '0' q eu falei ali em cima)
 	mov byte[saida+si], dl; Jogando o valor de dl (que contem o valor binário já convertido para ascii) no vetor saída
 	dec si; Andando no vetor de saida (escreve o número da direita para esquerda)
-	loop voltabin2asci
+	loop voltabin2asci ; cx = 4, si = 3
+
+
 ;------------------------
 ; Recuperando os valores originais que você salvou anteriormente
 ;------------------------

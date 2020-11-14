@@ -1,4 +1,4 @@
-; versão de 10/05/2007
+; versï¿½o de 10/05/2007
 ; corrigido erro de arredondamento na rotina line.
 ; circle e full_circle disponibilizados por Jefferson Moro em 10/2009
 ;
@@ -10,12 +10,12 @@ segment code
     		mov 		ss,ax
     		mov 		sp,stacktop
 
-; salvar modo corrente de video(vendo como está o modo de video da maquina)
+; salvar modo corrente de video(vendo como estï¿½ o modo de video da maquina)
             mov  		ah,0Fh
     		int  		10h
     		mov  		[modo_anterior],al   
 
-; alterar modo de video para gráfico 640x480 16 cores
+; alterar modo de video para grï¿½fico 640x480 16 cores
     	mov     	al,12h
    		mov     	ah,0
     	int     	10h
@@ -57,7 +57,7 @@ segment code
 		
 		
 ;desenha circulos 
-		mov		byte[cor],azul	;cabeça
+		mov		byte[cor],azul	;cabeï¿½a
 		mov		ax,200
 		push		ax
 		mov		ax,200
@@ -119,7 +119,7 @@ segment code
 
 ;escrever uma mensagem
 
-    	mov     	cx,14			;número de caracteres
+    	mov     	cx,14			;nï¿½mero de caracteres
     	mov     	bx,0
     	mov     	dh,0			;linha 0-29
     	mov     	dl,30			;coluna 0-79
@@ -142,7 +142,7 @@ l4:
 		int     21h
 ;***************************************************************************
 ;
-;   função cursor
+;   funï¿½ï¿½o cursor
 ;
 ; dh = linha (0-29) e  dl=coluna  (0-79)
 cursor:
@@ -168,7 +168,7 @@ cursor:
 		ret
 ;_____________________________________________________________________________
 ;
-;   função caracter escrito na posição do cursor
+;   funï¿½ï¿½o caracter escrito na posiï¿½ï¿½o do cursor
 ;
 ; al= caracter a ser escrito
 ; cor definida na variavel cor
@@ -197,7 +197,7 @@ caracter:
 		ret
 ;_____________________________________________________________________________
 ;
-;   função plot_xy
+;   funï¿½ï¿½o plot_xy
 ;
 ; push x; push y; call plot_xy;  (x<639, y<479)
 ; cor definida na variavel cor
@@ -228,7 +228,7 @@ plot_xy:
 		pop		bp
 		ret		4
 ;_____________________________________________________________________________
-;    função circle
+;    funï¿½ï¿½o circle
 ;	 push xc; push yc; push r; call circle;  (xc+r<639,yc+r<479)e(xc-r>0,yc-r>0)
 ; cor definida na variavel cor
 circle:
@@ -272,17 +272,17 @@ circle:
 		
 	mov		di,cx
 	sub		di,1	 ;di=r-1
-	mov		dx,0  	;dx será a variável x. cx é a variavel y
+	mov		dx,0  	;dx serï¿½ a variï¿½vel x. cx ï¿½ a variavel y
 	
-;aqui em cima a lógica foi invertida, 1-r => r-1
-;e as comparações passaram a ser jl => jg, assim garante 
+;aqui em cima a lï¿½gica foi invertida, 1-r => r-1
+;e as comparaï¿½ï¿½es passaram a ser jl => jg, assim garante 
 ;valores positivos para d
 
 stay:				;loop
 	mov		si,di
 	cmp		si,0
-	jg		inf       ;caso d for menor que 0, seleciona pixel superior (não  salta)
-	mov		si,dx		;o jl é importante porque trata-se de conta com sinal
+	jg		inf       ;caso d for menor que 0, seleciona pixel superior (nï¿½o  salta)
+	mov		si,dx		;o jl ï¿½ importante porque trata-se de conta com sinal
 	sal		si,1		;multiplica por doi (shift arithmetic left)
 	add		si,3
 	add		di,si     ;nesse ponto d=d+2*dx+3
@@ -311,7 +311,7 @@ plotar:
 	mov		si,bx
 	sub		si,cx
 	push    si			;coloca a ordenada yc-y na pilha
-	call plot_xy		;toma conta do sétimo octante
+	call plot_xy		;toma conta do sï¿½timo octante
 	mov		si,ax
 	add		si,cx
 	push    si			;coloca a abcisa xc+y na pilha
@@ -356,8 +356,8 @@ plotar:
 	call plot_xy		;toma conta do quarto octante
 	
 	cmp		cx,dx
-	jb		fim_circle  ;se cx (y) está abaixo de dx (x), termina     
-	jmp		stay		;se cx (y) está acima de dx (x), continua no loop
+	jb		fim_circle  ;se cx (y) estï¿½ abaixo de dx (x), termina     
+	jmp		stay		;se cx (y) estï¿½ acima de dx (x), continua no loop
 	
 	
 fim_circle:
@@ -371,7 +371,7 @@ fim_circle:
 	pop		bp
 	ret		6
 ;-----------------------------------------------------------------------------
-;    função full_circle
+;    funï¿½ï¿½o full_circle
 ;	 push xc; push yc; push r; call full_circle;  (xc+r<639,yc+r<479)e(xc-r>0,yc-r>0)
 ; cor definida na variavel cor					  
 full_circle:
@@ -402,17 +402,17 @@ full_circle:
 		
 	mov		di,cx
 	sub		di,1	 ;di=r-1
-	mov		dx,0  	;dx será a variável x. cx é a variavel y
+	mov		dx,0  	;dx serï¿½ a variï¿½vel x. cx ï¿½ a variavel y
 	
-;aqui em cima a lógica foi invertida, 1-r => r-1
-;e as comparações passaram a ser jl => jg, assim garante 
+;aqui em cima a lï¿½gica foi invertida, 1-r => r-1
+;e as comparaï¿½ï¿½es passaram a ser jl => jg, assim garante 
 ;valores positivos para d
 
 stay_full:				;loop
 	mov		si,di
 	cmp		si,0
-	jg		inf_full       ;caso d for menor que 0, seleciona pixel superior (não  salta)
-	mov		si,dx		;o jl é importante porque trata-se de conta com sinal
+	jg		inf_full       ;caso d for menor que 0, seleciona pixel superior (nï¿½o  salta)
+	mov		si,dx		;o jl ï¿½ importante porque trata-se de conta com sinal
 	sal		si,1		;multiplica por doi (shift arithmetic left)
 	add		si,3
 	add		di,si     ;nesse ponto d=d+2*dx+3
@@ -485,8 +485,8 @@ plotar_full:
 	call	line
 	
 	cmp		cx,dx
-	jb		fim_full_circle  ;se cx (y) está abaixo de dx (x), termina     
-	jmp		stay_full		;se cx (y) está acima de dx (x), continua no loop
+	jb		fim_full_circle  ;se cx (y) estï¿½ abaixo de dx (x), termina     
+	jmp		stay_full		;se cx (y) estï¿½ acima de dx (x), continua no loop
 	
 	
 fim_full_circle:
@@ -501,7 +501,7 @@ fim_full_circle:
 	ret		6
 ;-----------------------------------------------------------------------------
 ;
-;   função line
+;   funï¿½ï¿½o line
 ;
 ; push x1; push y1; push x2; push y2; call line;  (x<639, y<479)
 line:
@@ -539,7 +539,7 @@ line31:		inc		bx
 		jmp		line3
 ;deltax <>0
 line1:
-; comparar módulos de deltax e deltay sabendo que cx>ax
+; comparar mï¿½dulos de deltax e deltay sabendo que cx>ax
 	; cx > ax
 		push		cx
 		sub		cx,ax
@@ -619,12 +619,12 @@ line7:
 
 		mov		si,bx
 line6:
-		push		dx
-		push		si
-		push		ax
+		push	dx
+		push	si
+		push	ax
 		sub		si,bx	;(y-y1)
 		mov		ax,[deltax]
-		imul		si
+		imul	si
 		mov		si,[deltay]		;arredondar
 		shr		si,1
 ; se numerador (DX)>0 soma se <0 subtrai
@@ -636,14 +636,14 @@ line6:
 ar2:		sub		ax,si
 		sbb		dx,0
 arc2:
-		idiv		word [deltay]
+		idiv	word [deltay]
 		mov		di,ax
 		pop		ax
 		add		di,ax
 		pop		si
-		push		di
-		push		si
-		call		plot_xy
+		push	di
+		push	si
+		call	plot_xy
 		pop		dx
 		cmp		si,dx
 		je		fim_line
@@ -664,7 +664,8 @@ fim_line:
 segment data
 
 cor		db		branco_intenso
-
+;
+;   16 cores possÃ­veis. 2^4.
 ;	I R G B COR
 ;	0 0 0 0 preto
 ;	0 0 0 1 azul
@@ -683,32 +684,32 @@ cor		db		branco_intenso
 ;	1 1 1 0 amarelo
 ;	1 1 1 1 branco intenso
 
-preto		equ		0
-azul		equ		1
-verde		equ		2
-cyan		equ		3
-vermelho	equ		4
-magenta		equ		5
-marrom		equ		6
-branco		equ		7
-cinza		equ		8
-azul_claro	equ		9
-verde_claro	equ		10
-cyan_claro	equ		11
-rosa		equ		12
+preto		    equ		0
+azul		    equ		1
+verde		    equ		2
+cyan		    equ		3
+vermelho	    equ		4
+magenta		    equ		5
+marrom		    equ		6
+branco		    equ		7
+cinza		    equ		8
+azul_claro	    equ		9
+verde_claro	    equ		10
+cyan_claro	    equ		11
+rosa		    equ		12
 magenta_claro	equ		13
-amarelo		equ		14
+amarelo		    equ		14
 branco_intenso	equ		15
 
 modo_anterior	db		0
-linha   	dw  		0
-coluna  	dw  		0
-deltax		dw		0
-deltay		dw		0	
-mens    	db  		'Funcao Grafica'
+linha   	    dw  	0
+coluna  	    dw  	0
+deltax		    dw		0
+deltay		    dw		0	
+mens    	    db  	'Funcao Grafica'
 ;*************************************************************************
 segment stack stack
-    		resb 		512
+    resb 		512
 stacktop:
 
 
